@@ -1,4 +1,4 @@
-/* Athar Sourcing — Canonical 'Waqf Deed' Design System */
+/* Athar Sourcing — Canonical 'Waqf Deed' Design System (v2 Multi-Page) */
 :root {
   --trustee-green: #0F3B2E;
   --deep-green: #09261D;
@@ -86,6 +86,7 @@ button {
 }
 
 .band-dark :focus-visible,
+.hero-band :focus-visible,
 .top-strip :focus-visible,
 .site-footer :focus-visible {
   outline-color: var(--light-brass);
@@ -96,6 +97,7 @@ button {
   inset-block-start: -120px;
   inset-inline-start: 16px;
   z-index: 200;
+  min-height: 44px;
   padding: 10px 18px;
   background-color: var(--deep-green);
   color: var(--light-brass);
@@ -125,7 +127,7 @@ button {
   overflow-wrap: anywhere;
 }
 
-/* Sovereign Top Strip */
+/* Sovereign Top Strip (Desktop Only — hidden on mobile to keep CTA above fold) */
 .top-strip {
   background-color: var(--deep-green);
   color: var(--on-green-muted);
@@ -139,7 +141,7 @@ button {
   align-items: center;
   justify-content: space-between;
   gap: 8px 20px;
-  padding-block: 9px;
+  padding-block: 6px;
 }
 
 .strip-status {
@@ -166,11 +168,17 @@ button {
   font-size: 0.8rem;
 }
 
+.strip-meta a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+
 .strip-sep {
   color: rgba(220, 212, 191, 0.35);
 }
 
-/* Sticky Navigation */
+/* Sticky Multi-Page Navigation */
 .site-header {
   position: sticky;
   top: 0;
@@ -185,19 +193,20 @@ button {
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  min-height: 76px;
+  min-height: 74px;
 }
 
 .brand-lockup {
   display: inline-flex;
   align-items: center;
   gap: 12px;
+  min-height: 48px;
   flex-shrink: 0;
 }
 
 .brand-seal-box {
-  width: 46px;
-  height: 46px;
+  width: 44px;
+  height: 44px;
   background-color: var(--trustee-green);
   border: 1px solid var(--waqf-brass);
   padding: 5px;
@@ -206,7 +215,7 @@ button {
 
 .brand-text-ar {
   font-family: var(--font-display);
-  font-size: 1.45rem;
+  font-size: 1.42rem;
   font-weight: 700;
   line-height: 1.05;
   color: var(--trustee-green);
@@ -224,16 +233,25 @@ button {
 .primary-nav {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 18px;
 }
 
 .nav-link {
-  font-size: 0.88rem;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-size: 0.9rem;
   font-weight: 600;
   color: var(--deed-ink);
-  padding-block: 6px;
+  padding-inline: 4px;
   border-bottom: 2px solid transparent;
   transition: color 160ms var(--ease-out), border-color 160ms var(--ease-out);
+}
+
+.nav-link.is-current {
+  color: var(--trustee-green);
+  border-bottom-color: var(--waqf-brass);
+  font-weight: 700;
 }
 
 .header-actions {
@@ -246,12 +264,12 @@ button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 42px;
+  min-height: 44px;
   padding-inline: 14px;
   border: 1px solid rgba(15, 59, 46, 0.32);
   background-color: var(--deed-sand);
   color: var(--trustee-green);
-  font-size: 0.84rem;
+  font-size: 0.85rem;
   font-weight: 600;
   transition: background-color 160ms var(--ease-out), color 160ms var(--ease-out), transform 140ms var(--ease-out);
 }
@@ -287,7 +305,7 @@ button {
 .btn-outline-light {
   background-color: transparent;
   color: var(--deed-paper);
-  border: 1px solid rgba(212, 174, 99, 0.55);
+  border: 1px solid rgba(212, 174, 99, 0.58);
 }
 
 .btn-outline-dark {
@@ -301,9 +319,7 @@ button {
 .btn-outline-light:active,
 .btn-outline-dark:active,
 .lang-switch:active,
-.lens-tab:active,
-.filter-tab:active,
-.gap-tab:active {
+.filter-tab:active {
   transform: scale(0.97);
 }
 
@@ -346,12 +362,15 @@ button {
 .mobile-nav-list {
   display: flex;
   flex-direction: column;
-  padding: 12px 24px 20px;
+  padding: 10px 24px 18px;
 }
 
 .mobile-nav-list a {
-  padding-block: 12px;
-  border-bottom: 1px solid rgba(15, 59, 46, 0.1);
+  display: flex;
+  align-items: center;
+  min-height: 46px;
+  padding-block: 10px;
+  border-bottom: 1px solid rgba(15, 59, 46, 0.12);
   font-weight: 600;
 }
 
@@ -361,19 +380,23 @@ button {
   background-color: var(--deep-green);
   color: var(--deed-paper);
   border-bottom: 2px solid var(--waqf-brass);
-  padding-block: 56px 0;
+  padding-block: 44px 0;
   background-image:
     linear-gradient(rgba(212, 174, 99, 0.045) 1px, transparent 1px),
     linear-gradient(90deg, rgba(212, 174, 99, 0.045) 1px, transparent 1px);
   background-size: 56px 56px;
 }
 
+.hero-band-compact {
+  padding-block: 48px 52px;
+}
+
 .hero-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.18fr) minmax(0, 0.82fr);
-  gap: 44px;
+  grid-template-columns: minmax(0, 1.16fr) minmax(0, 0.84fr);
+  gap: 40px;
   align-items: start;
-  padding-bottom: 52px;
+  padding-bottom: 44px;
 }
 
 .eyebrow-badge {
@@ -388,60 +411,21 @@ button {
   font-size: 0.76rem;
   font-weight: 600;
   letter-spacing: 0.04em;
+  margin-bottom: 16px;
 }
 
 [dir="rtl"] .eyebrow-badge {
   font-family: var(--font-ar);
   letter-spacing: 0;
-}
-
-.lens-bar {
-  margin-top: 22px;
-  margin-bottom: 22px;
-}
-
-.lens-caption {
-  display: block;
   font-size: 0.82rem;
-  color: var(--on-green-muted);
-  margin-bottom: 8px;
-}
-
-.lens-tabs {
-  display: inline-grid;
-  grid-template-columns: 1fr 1fr;
-  border: 1px solid var(--waqf-brass);
-  background-color: var(--trustee-green);
-  width: 100%;
-  max-width: 580px;
-}
-
-.lens-tab {
-  min-height: 44px;
-  padding: 9px 14px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--on-green-muted);
-  text-align: center;
-  transition: background-color 170ms var(--ease-out), color 170ms var(--ease-out), transform 140ms var(--ease-out);
-}
-
-.lens-tab[aria-selected="true"] {
-  background-color: var(--light-brass);
-  color: var(--deep-green);
-  font-weight: 700;
-}
-
-.hero-mode-panel[hidden] {
-  display: none;
 }
 
 .hero-title {
   font-family: var(--font-display);
-  font-size: clamp(2.05rem, 3.5vw, 3.2rem);
+  font-size: clamp(1.95rem, 3.3vw, 3.05rem);
   font-weight: 700;
   line-height: 1.22;
-  margin: 0 0 18px;
+  margin: 0 0 16px;
   color: var(--deed-paper);
 }
 
@@ -450,16 +434,39 @@ button {
 }
 
 .hero-lead {
-  font-size: 1.06rem;
+  font-size: 1.04rem;
   color: var(--on-green-muted);
-  margin: 0 0 22px;
+  margin: 0 0 18px;
   max-width: 64ch;
+}
+
+.open-book-box {
+  background-color: rgba(15, 59, 46, 0.78);
+  border: 1px solid rgba(212, 174, 99, 0.42);
+  border-inline-start: 3px solid var(--light-brass);
+  padding: 14px 18px;
+  margin-bottom: 22px;
+  max-width: 64ch;
+}
+
+.open-book-title {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--light-brass);
+  margin-bottom: 4px;
+}
+
+.open-book-def {
+  font-size: 0.9rem;
+  color: var(--deed-paper);
+  margin: 0;
+  line-height: 1.62;
 }
 
 .hero-bullets {
   list-style: none;
   padding: 0;
-  margin: 0 0 28px;
+  margin: 0 0 24px;
   display: grid;
   gap: 10px;
 }
@@ -487,11 +494,30 @@ button {
   gap: 12px;
 }
 
+.hero-sublink-row {
+  margin-top: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.86rem;
+  color: var(--on-green-muted);
+}
+
+.hero-sublink {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--light-brass);
+  font-weight: 700;
+  border-bottom: 1px solid rgba(212, 174, 99, 0.5);
+}
+
 /* Sovereign Deed Specimen Card */
 .deed-specimen {
   background-color: var(--trustee-green);
   border: 2px solid var(--waqf-brass);
-  padding: 26px;
+  padding: 24px;
   position: relative;
 }
 
@@ -500,43 +526,41 @@ button {
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  padding-bottom: 18px;
+  padding-bottom: 16px;
   border-bottom: 1px solid rgba(184, 137, 59, 0.45);
 }
 
 .deed-specimen-seal {
-  width: 64px;
-  height: 64px;
+  width: 60px;
+  height: 60px;
   flex-shrink: 0;
 }
 
 .deed-code {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.1em;
+  font-size: 0.76rem;
+  font-weight: 600;
   color: var(--light-brass);
 }
 
 .deed-title {
   font-family: var(--font-display);
-  font-size: 1.45rem;
+  font-size: 1.42rem;
   font-weight: 700;
   margin: 4px 0 2px;
   color: var(--deed-paper);
 }
 
 .deed-sub {
-  font-size: 0.83rem;
+  font-size: 0.82rem;
   color: var(--on-green-muted);
   margin: 0;
 }
 
 .deed-texture-strip {
-  margin-block: 16px;
-  height: 64px;
+  margin-block: 14px;
+  height: 58px;
   border: 1px solid rgba(184, 137, 59, 0.4);
   overflow: hidden;
-  position: relative;
 }
 
 .deed-texture-strip img {
@@ -555,10 +579,10 @@ button {
   align-items: baseline;
   justify-content: space-between;
   gap: 12px;
-  padding: 9px 12px;
+  padding: 8px 12px;
   background-color: rgba(9, 38, 29, 0.65);
   border-inline-start: 2px solid var(--waqf-brass);
-  font-size: 0.86rem;
+  font-size: 0.85rem;
 }
 
 .deed-row-highlight {
@@ -586,14 +610,15 @@ button {
 }
 
 .deed-total {
-  margin-top: 14px;
-  padding-top: 14px;
+  margin-top: 12px;
+  padding-top: 12px;
   border-top: 2px solid var(--waqf-brass);
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
   justify-content: space-between;
   gap: 8px;
+  font-size: 0.9rem;
 }
 
 .deed-total-val {
@@ -622,7 +647,7 @@ button {
 }
 
 .kpi-cell {
-  padding: 22px 20px;
+  padding: 20px 18px;
   border-inline-end: 1px solid rgba(184, 137, 59, 0.28);
 }
 
@@ -633,28 +658,87 @@ button {
 .kpi-num {
   font-family: var(--font-mono);
   font-variant-numeric: tabular-nums;
-  font-size: 1.75rem;
+  font-size: 1.7rem;
   font-weight: 600;
   color: var(--light-brass);
   line-height: 1.15;
 }
 
 .kpi-label {
-  font-size: 0.92rem;
+  font-size: 0.9rem;
   font-weight: 700;
   color: var(--deed-paper);
   margin-top: 4px;
 }
 
 .kpi-sub {
-  font-size: 0.8rem;
+  font-size: 0.79rem;
   color: var(--on-green-muted);
   margin-top: 2px;
 }
 
-/* Standard Chapters */
+/* Trust & Specimen Download Band */
+.trust-band {
+  background-color: var(--deed-sand);
+  border-bottom: 2px solid var(--waqf-brass);
+  padding-block: 32px;
+}
+
+.trust-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-bottom: 20px;
+}
+
+.trust-card {
+  background-color: var(--deed-paper);
+  border: 1px solid rgba(15, 59, 46, 0.24);
+  border-inline-start: 3px solid var(--trustee-green);
+  padding: 16px 18px;
+}
+
+.trust-card-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--trustee-green);
+  margin: 0 0 4px;
+}
+
+.trust-card-desc {
+  font-size: 0.86rem;
+  color: var(--muted-ink);
+  margin: 0;
+}
+
+.specimen-bar {
+  background-color: var(--deed-paper);
+  border: 2px solid var(--trustee-green);
+  padding: 18px 22px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.specimen-bar-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--trustee-green);
+  margin: 0 0 3px;
+}
+
+.specimen-bar-desc {
+  font-size: 0.87rem;
+  color: var(--muted-ink);
+  margin: 0;
+  max-width: 72ch;
+}
+
+/* Standard Sections */
 .section-band {
-  padding-block: 76px;
+  padding-block: 68px;
   border-bottom: 1px solid rgba(15, 59, 46, 0.16);
 }
 
@@ -670,7 +754,7 @@ button {
 
 .section-header {
   max-width: 820px;
-  margin-bottom: 40px;
+  margin-bottom: 36px;
 }
 
 .chapter-meta {
@@ -678,10 +762,10 @@ button {
   flex-wrap: wrap;
   align-items: center;
   gap: 10px;
-  font-size: 0.8rem;
+  font-size: 0.82rem;
   font-weight: 700;
   color: var(--deep-brass);
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 .band-dark .chapter-meta {
@@ -689,7 +773,7 @@ button {
 }
 
 .chapter-rule {
-  width: 34px;
+  width: 32px;
   height: 2px;
   background-color: var(--waqf-brass);
   display: inline-block;
@@ -697,11 +781,11 @@ button {
 
 .section-title {
   font-family: var(--font-display);
-  font-size: clamp(1.8rem, 2.8vw, 2.55rem);
+  font-size: clamp(1.75rem, 2.7vw, 2.45rem);
   font-weight: 700;
   line-height: 1.24;
   color: var(--trustee-green);
-  margin: 0 0 14px;
+  margin: 0 0 12px;
 }
 
 .band-dark .section-title {
@@ -709,7 +793,7 @@ button {
 }
 
 .section-intro {
-  font-size: 1.02rem;
+  font-size: 1rem;
   color: var(--muted-ink);
   margin: 0;
 }
@@ -718,122 +802,68 @@ button {
   color: var(--on-green-muted);
 }
 
-/* Section 01: Gap Tabs & Parity Benchmark */
-.gap-layout {
+/* Home How It Works + Cost Benchmark */
+.how-layout {
   display: grid;
-  grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 32px;
   align-items: start;
 }
 
-.gap-tablist {
+.steps-stack {
   display: grid;
-  gap: 8px;
-  margin-bottom: 18px;
+  gap: 14px;
 }
 
-.gap-tab {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  width: 100%;
-  min-height: 48px;
-  padding: 12px 16px;
-  text-align: start;
+.step-card {
   background-color: var(--deed-sand);
-  border: 1px solid rgba(15, 59, 46, 0.22);
-  font-weight: 600;
-  color: var(--deed-ink);
-  transition: background-color 160ms var(--ease-out), color 160ms var(--ease-out), border-color 160ms var(--ease-out), transform 140ms var(--ease-out);
+  border: 1px solid rgba(15, 59, 46, 0.24);
+  border-inline-start: 4px solid var(--trustee-green);
+  padding: 20px 22px;
 }
 
-.gap-tab[aria-selected="true"] {
-  background-color: var(--trustee-green);
-  color: var(--deed-paper);
-  border-color: var(--trustee-green);
-}
-
-.gap-tab-code {
+.step-num {
   font-family: var(--font-mono);
-  font-size: 0.8rem;
+  font-size: 0.82rem;
+  font-weight: 600;
   color: var(--deep-brass);
 }
 
-.gap-tab[aria-selected="true"] .gap-tab-code {
-  color: var(--light-brass);
-}
-
-.gap-panel {
-  background-color: var(--deed-paper);
-  border: 2px solid var(--trustee-green);
-  padding: 24px;
-}
-
-.gap-panel[hidden] {
-  display: none;
-}
-
-.gap-panel-title {
-  font-family: var(--font-display);
-  font-size: 1.38rem;
+.step-title {
+  font-size: 1.06rem;
+  font-weight: 700;
   color: var(--trustee-green);
-  margin: 0 0 14px;
+  margin: 4px 0 6px;
 }
 
-.gap-compare-row {
-  display: grid;
-  gap: 12px;
-}
-
-.gap-box {
-  padding: 14px 16px;
-  background-color: var(--deed-sand);
-  border-inline-start: 3px solid var(--seal-red);
-  font-size: 0.92rem;
-}
-
-.gap-box-sol {
-  background-color: rgba(15, 59, 46, 0.06);
-  border-inline-start-color: var(--trustee-green);
-}
-
-.gap-metric-pill {
-  margin-top: 14px;
-  display: inline-block;
-  padding: 6px 12px;
-  background-color: var(--trustee-green);
-  color: var(--light-brass);
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  font-weight: 600;
-}
-
-[dir="rtl"] .gap-metric-pill {
-  font-family: var(--font-ar);
+.step-desc {
+  font-size: 0.9rem;
+  color: var(--deed-ink);
+  margin: 0;
 }
 
 .bench-card {
   background-color: var(--deed-sand);
   border: 2px solid var(--waqf-brass);
-  padding: 26px;
+  padding: 24px;
 }
 
 .bench-title {
-  font-size: 1.05rem;
+  font-size: 1.04rem;
   font-weight: 700;
   color: var(--trustee-green);
-  margin: 0 0 8px;
+  margin: 0 0 6px;
 }
 
 .bench-note {
   font-size: 0.86rem;
   color: var(--muted-ink);
-  margin: 0 0 22px;
+  margin: 0 0 20px;
 }
 
 .bench-list {
   display: grid;
-  gap: 18px;
+  gap: 16px;
 }
 
 .bench-item-head {
@@ -882,7 +912,16 @@ button {
   margin: 5px 0 0;
 }
 
-/* Section 02: 4 Pillars Accordion & 6-Stage QA */
+.bench-method-note {
+  margin-top: 18px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(184, 137, 59, 0.45);
+  font-size: 0.78rem;
+  color: var(--muted-ink);
+  line-height: 1.6;
+}
+
+/* Accordions & 6-Stage QA (Partners & ESG FAQ) */
 .model-grid {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
@@ -906,18 +945,18 @@ button {
 
 .accordion-trigger {
   width: 100%;
+  min-height: 54px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 14px;
-  padding: 18px 20px;
+  padding: 16px 20px;
   text-align: start;
 }
 
 .acc-num {
-  font-family: var(--font-mono);
   font-size: 0.82rem;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--deep-brass);
 }
 
@@ -969,9 +1008,8 @@ button {
 }
 
 .accordion-body {
-  padding: 0 20px 18px;
+  padding: 14px 20px 18px;
   border-top: 1px solid rgba(184, 137, 59, 0.35);
-  padding-top: 14px;
   font-size: 0.92rem;
   color: var(--deed-ink);
 }
@@ -984,10 +1022,9 @@ button {
 }
 
 .qa-kicker {
-  font-family: var(--font-mono);
-  font-size: 0.76rem;
+  font-size: 0.8rem;
+  font-weight: 700;
   color: var(--light-brass);
-  letter-spacing: 0.08em;
 }
 
 .qa-title {
@@ -1023,6 +1060,7 @@ button {
 
 .qa-stage-btn {
   width: 100%;
+  min-height: 44px;
   display: flex;
   align-items: center;
   gap: 12px;
@@ -1060,15 +1098,15 @@ button {
   border-inline-start: 3px solid var(--light-brass);
   font-size: 0.9rem;
   color: var(--on-green-muted);
-  min-height: 78px;
+  min-height: 76px;
 }
 
-/* Section 03: Flagship ESG Report Accounting Matrix */
+/* ESG Summary & Full Matrix */
 .esg-summary-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 18px;
-  margin-bottom: 30px;
+  margin-bottom: 26px;
 }
 
 .esg-pillar-card {
@@ -1086,7 +1124,7 @@ button {
 }
 
 .esg-pillar-pct {
-  font-size: 1.05rem;
+  font-size: 1.04rem;
   font-weight: 700;
   color: var(--trustee-green);
   line-height: 1.35;
@@ -1113,7 +1151,7 @@ button {
 }
 
 .filter-tab {
-  min-height: 42px;
+  min-height: 44px;
   padding: 8px 16px;
   border: 1px solid rgba(15, 59, 46, 0.32);
   background-color: var(--deed-sand);
@@ -1186,7 +1224,7 @@ button {
 .esg-pct-num {
   font-family: var(--font-mono);
   font-variant-numeric: tabular-nums;
-  font-size: 1.5rem;
+  font-size: 1.48rem;
   font-weight: 700;
   color: var(--trustee-green);
   line-height: 1.1;
@@ -1198,7 +1236,7 @@ button {
 }
 
 .esg-row-title {
-  font-size: 1.04rem;
+  font-size: 1.03rem;
   font-weight: 700;
   color: var(--deed-ink);
   margin: 0 0 6px;
@@ -1240,7 +1278,7 @@ button {
   color: var(--deed-ink);
 }
 
-/* Section 04: Athar Loop & 35/35/30 Escrow */
+/* Closed-Loop & 35/35/30 Escrow */
 .loop-layout {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
@@ -1332,6 +1370,7 @@ button {
 
 .escrow-slice-btn {
   width: 100%;
+  min-height: 44px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -1362,7 +1401,7 @@ button {
   color: var(--on-green-muted);
 }
 
-/* Section 05: Endorsed Verticals */
+/* Endorsed Verticals */
 .verticals-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1379,7 +1418,7 @@ button {
 }
 
 .vertical-photo-wrap {
-  height: 168px;
+  height: 164px;
   position: relative;
   overflow: hidden;
   border-bottom: 2px solid var(--waqf-brass);
@@ -1396,16 +1435,11 @@ button {
   top: 12px;
   inset-inline-start: 12px;
   padding: 4px 10px;
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  font-weight: 600;
+  font-size: 0.75rem;
+  font-weight: 700;
   background-color: var(--deed-paper);
   color: var(--trustee-green);
   border: 1px solid var(--trustee-green);
-}
-
-[dir="rtl"] .vertical-status {
-  font-family: var(--font-ar);
 }
 
 .vertical-status.is-live {
@@ -1415,10 +1449,10 @@ button {
 }
 
 .vertical-body {
-  padding: 22px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 12px;
   flex: 1;
 }
 
@@ -1429,8 +1463,8 @@ button {
 }
 
 .vmark-box {
-  width: 54px;
-  height: 54px;
+  width: 52px;
+  height: 52px;
   padding: 6px;
   background-color: var(--deed-sand);
   border: 1px solid rgba(15, 59, 46, 0.22);
@@ -1444,7 +1478,7 @@ button {
 
 .vertical-name-ar {
   font-family: var(--font-display);
-  font-size: 1.42rem;
+  font-size: 1.4rem;
   font-weight: 700;
   color: var(--trustee-green);
   line-height: 1.1;
@@ -1488,7 +1522,7 @@ button {
 
 .vertical-select-btn {
   width: 100%;
-  min-height: 44px;
+  min-height: 46px;
   padding: 10px 16px;
   background-color: var(--deed-sand);
   border-top: 1px solid rgba(15, 59, 46, 0.22);
@@ -1499,7 +1533,7 @@ button {
   transition: background-color 160ms var(--ease-out), color 160ms var(--ease-out);
 }
 
-/* Section 06: Governance & FAQ */
+/* Governance Pillars */
 .gov-pillars-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1527,7 +1561,7 @@ button {
   margin: 0;
 }
 
-/* Section 07: Partnership Portal Form */
+/* Inquiry & Qualification Forms */
 .portal-grid {
   display: grid;
   grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
@@ -1539,28 +1573,6 @@ button {
   background-color: var(--deed-paper);
   border: 2px solid var(--trustee-green);
   padding: 28px;
-}
-
-.track-tabs {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  border: 1px solid var(--trustee-green);
-  margin-bottom: 24px;
-}
-
-.track-tab {
-  min-height: 46px;
-  padding: 10px 14px;
-  font-size: 0.88rem;
-  font-weight: 700;
-  background-color: var(--deed-sand);
-  color: var(--trustee-green);
-  transition: background-color 160ms var(--ease-out), color 160ms var(--ease-out);
-}
-
-.track-tab[aria-selected="true"] {
-  background-color: var(--trustee-green);
-  color: var(--light-brass);
 }
 
 .form-grid-2 {
@@ -1602,6 +1614,37 @@ button {
   border-color: var(--seal-red);
 }
 
+.consent-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  min-height: 44px;
+  padding: 10px 12px;
+  background-color: var(--deed-sand);
+  border: 1px solid rgba(15, 59, 46, 0.22);
+}
+
+.consent-check {
+  width: 20px;
+  height: 20px;
+  margin-top: 3px;
+  accent-color: var(--trustee-green);
+  flex-shrink: 0;
+}
+
+.consent-label {
+  font-size: 0.85rem;
+  color: var(--deed-ink);
+  line-height: 1.55;
+  cursor: pointer;
+}
+
+.consent-label a {
+  color: var(--trustee-green);
+  font-weight: 700;
+  border-bottom: 1px solid var(--trustee-green);
+}
+
 .field-error {
   display: block;
   min-height: 18px;
@@ -1622,11 +1665,24 @@ button {
   display: none;
 }
 
+.brief-status-banner {
+  font-size: 0.88rem;
+  color: var(--deed-paper);
+  padding: 10px 12px;
+  background-color: rgba(9, 38, 29, 0.72);
+  border-inline-start: 3px solid var(--light-brass);
+  margin-block: 8px 12px;
+}
+
 .brief-ref-line {
   font-family: var(--font-mono);
   font-size: 0.9rem;
   color: var(--light-brass);
   margin-block: 4px 12px;
+}
+
+[dir="rtl"] .brief-ref-line {
+  font-family: var(--font-ar);
 }
 
 .brief-preview {
@@ -1675,9 +1731,50 @@ button {
 }
 
 .desk-val {
-  font-size: 0.95rem;
+  font-size: 0.94rem;
   color: var(--deed-paper);
   margin-top: 2px;
+}
+
+.desk-val a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--light-brass);
+  font-weight: 600;
+}
+
+/* Saudi PDPL Privacy Prose */
+.privacy-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.65fr);
+  gap: 32px;
+  align-items: start;
+}
+
+.privacy-stack {
+  display: grid;
+  gap: 16px;
+}
+
+.privacy-clause {
+  background-color: var(--deed-paper);
+  border: 1px solid rgba(15, 59, 46, 0.26);
+  border-inline-start: 4px solid var(--trustee-green);
+  padding: 22px 24px;
+}
+
+.privacy-clause h2 {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  color: var(--trustee-green);
+  margin: 0 0 8px;
+}
+
+.privacy-clause p {
+  margin: 0;
+  font-size: 0.94rem;
+  color: var(--deed-ink);
 }
 
 /* Sovereign Footer */
@@ -1690,27 +1787,58 @@ button {
 
 .footer-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.4fr) minmax(0, 0.6fr);
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.7fr);
   gap: 28px;
   padding-bottom: 24px;
   border-bottom: 1px solid rgba(212, 174, 99, 0.25);
 }
 
+.footer-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  margin-top: 14px;
+}
+
+.footer-nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--light-brass);
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
 .footer-contacts {
   display: grid;
-  gap: 8px;
+  gap: 4px;
   align-content: start;
   font-size: 0.9rem;
   color: var(--light-brass);
+}
+
+.footer-contacts a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
 }
 
 .footer-bottom {
   padding-top: 18px;
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   justify-content: space-between;
   gap: 12px;
   font-size: 0.82rem;
+}
+
+.footer-bottom a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--light-brass);
+  font-weight: 600;
 }
 
 /* Hover guards for pointer devices only */
@@ -1756,13 +1884,15 @@ button {
     display: inline-flex;
   }
   .hero-grid,
-  .gap-layout,
+  .how-layout,
   .model-grid,
   .loop-layout,
   .portal-grid,
+  .privacy-grid,
   .footer-grid {
     grid-template-columns: minmax(0, 1fr);
   }
+  .trust-grid,
   .esg-summary-grid,
   .verticals-grid,
   .gov-pillars-grid {
@@ -1776,18 +1906,20 @@ button {
   }
 }
 
-@media (max-width: 680px) {
+@media (max-width: 768px) {
+  .top-strip { display: none; }
+  .hero-band {
+    padding-top: 28px;
+  }
   .container {
     padding-inline: 16px;
   }
   .section-band {
-    padding-block: 52px;
+    padding-block: 50px;
   }
   .esg-ledger-grid,
   .form-grid-2,
   .escrow-visual-row,
-  .lens-tabs,
-  .track-tabs,
   .kpi-grid {
     grid-template-columns: minmax(0, 1fr);
   }

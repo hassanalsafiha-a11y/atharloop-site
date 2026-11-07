@@ -5,10 +5,48 @@
     <loc>https://atharloop.com/</loc>
     <xhtml:link rel="alternate" hreflang="ar" href="https://atharloop.com/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://atharloop.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://atharloop.com/"/>
   </url>
   <url>
     <loc>https://atharloop.com/en/</loc>
     <xhtml:link rel="alternate" hreflang="ar" href="https://atharloop.com/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://atharloop.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://atharloop.com/"/>
+  </url>
+  <url>
+    <loc>https://atharloop.com/partners/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://atharloop.com/partners/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://atharloop.com/en/partners/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://atharloop.com/partners/"/>
+  </url>
+  <url>
+    <loc>https://atharloop.com/en/partners/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://atharloop.com/partners/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://atharloop.com/en/partners/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://atharloop.com/partners/"/>
+  </url>
+  <url>
+    <loc>https://atharloop.com/esg/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://atharloop.com/esg/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://atharloop.com/en/esg/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://atharloop.com/esg/"/>
+  </url>
+  <url>
+    <loc>https://atharloop.com/en/esg/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://atharloop.com/esg/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://atharloop.com/en/esg/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://atharloop.com/esg/"/>
+  </url>
+  <url>
+    <loc>https://atharloop.com/privacy/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://atharloop.com/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://atharloop.com/en/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://atharloop.com/privacy/"/>
+  </url>
+  <url>
+    <loc>https://atharloop.com/en/privacy/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://atharloop.com/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://atharloop.com/en/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://atharloop.com/privacy/"/>
   </url>
 </urlset>

@@ -1,4 +1,4 @@
-/* Athar Sourcing — Accessible Interactive Controller (file:// & HTTPS safe) */
+/* Athar Sourcing — Accessible Multi-Page Controller (file:// & HTTPS safe) */
 (function () {
   'use strict';
 
@@ -29,100 +29,7 @@
     });
   }
 
-  /* 2. Synchronized Audience Mode (Hero Lens <-> Partnership Form Track) */
-  var formEl = document.getElementById('partnershipForm');
-  var activeTrack = 'buyer';
-
-  function applyFormTrack(track) {
-    activeTrack = track === 'factory' ? 'factory' : 'buyer';
-    var trackBtns = document.querySelectorAll('[data-track]');
-    for (var i = 0; i < trackBtns.length; i++) {
-      var isMatch = trackBtns[i].getAttribute('data-track') === activeTrack;
-      trackBtns[i].setAttribute('aria-selected', isMatch ? 'true' : 'false');
-    }
-    if (!formEl) return;
-    var trackInput = document.getElementById('fieldTrack');
-    if (trackInput) trackInput.value = activeTrack;
-
-    var swaps = formEl.querySelectorAll('[data-buyer-text]');
-    for (var j = 0; j < swaps.length; j++) {
-      var el = swaps[j];
-      el.textContent = el.getAttribute(activeTrack === 'factory' ? 'data-factory-text' : 'data-buyer-text');
-    }
-    var phSwaps = formEl.querySelectorAll('[data-buyer-ph]');
-    for (var k = 0; k < phSwaps.length; k++) {
-      var inp = phSwaps[k];
-      inp.setAttribute('placeholder', inp.getAttribute(activeTrack === 'factory' ? 'data-factory-ph' : 'data-buyer-ph'));
-    }
-    var scopeSelect = document.getElementById('fieldScope');
-    if (scopeSelect) {
-      var rawOpts = scopeSelect.getAttribute(activeTrack === 'factory' ? 'data-factory-options' : 'data-buyer-options');
-      if (rawOpts) {
-        var list = rawOpts.split('||');
-        scopeSelect.innerHTML = '';
-        for (var m = 0; m < list.length; m++) {
-          var opt = document.createElement('option');
-          opt.value = list[m];
-          opt.textContent = list[m];
-          scopeSelect.appendChild(opt);
-        }
-      }
-    }
-  }
-
-  function applyHeroLens(mode) {
-    var target = mode === 'factory' ? 'factory' : 'buyer';
-    var lensBtns = document.querySelectorAll('[data-lens]');
-    for (var i = 0; i < lensBtns.length; i++) {
-      var active = lensBtns[i].getAttribute('data-lens') === target;
-      lensBtns[i].setAttribute('aria-selected', active ? 'true' : 'false');
-    }
-    var panels = document.querySelectorAll('[data-lens-panel]');
-    for (var j = 0; j < panels.length; j++) {
-      var show = panels[j].getAttribute('data-lens-panel') === target;
-      if (show) {
-        panels[j].removeAttribute('hidden');
-      } else {
-        panels[j].setAttribute('hidden', '');
-      }
-    }
-    applyFormTrack(target);
-  }
-
-  var lensTriggers = document.querySelectorAll('[data-lens]');
-  for (var lt = 0; lt < lensTriggers.length; lt++) {
-    lensTriggers[lt].addEventListener('click', function () {
-      applyHeroLens(this.getAttribute('data-lens'));
-    });
-  }
-
-  var trackTriggers = document.querySelectorAll('[data-track]');
-  for (var tt = 0; tt < trackTriggers.length; tt++) {
-    trackTriggers[tt].addEventListener('click', function () {
-      applyFormTrack(this.getAttribute('data-track'));
-    });
-  }
-
-  /* 3. Section 01: Gap Diagnostic Tabs */
-  var gapTabs = document.querySelectorAll('[data-gap-tab]');
-  for (var gt = 0; gt < gapTabs.length; gt++) {
-    gapTabs[gt].addEventListener('click', function () {
-      var targetId = this.getAttribute('data-gap-tab');
-      for (var x = 0; x < gapTabs.length; x++) {
-        gapTabs[x].setAttribute('aria-selected', gapTabs[x] === this ? 'true' : 'false');
-      }
-      var panels = document.querySelectorAll('[data-gap-panel]');
-      for (var y = 0; y < panels.length; y++) {
-        if (panels[y].getAttribute('data-gap-panel') === targetId) {
-          panels[y].removeAttribute('hidden');
-        } else {
-          panels[y].setAttribute('hidden', '');
-        }
-      }
-    });
-  }
-
-  /* 4. CSS Grid Accordions (4 Pillars & Governance FAQs) */
+  /* 2. CSS Grid Accordions (4 Pillars on /partners/ & Executive FAQs on /esg/) */
   var accTriggers = document.querySelectorAll('.accordion-trigger');
   for (var ac = 0; ac < accTriggers.length; ac++) {
     accTriggers[ac].addEventListener('click', function () {
@@ -143,7 +50,7 @@
     });
   }
 
-  /* 5. Section 02: 6-Stage Athar QA Inspector */
+  /* 3. Six-Stage Athar QA Inspector (/partners/) */
   var qaBtns = document.querySelectorAll('[data-qa-stage]');
   var qaBox = document.getElementById('qaDetailBox');
   for (var qb = 0; qb < qaBtns.length; qb++) {
@@ -157,7 +64,7 @@
     });
   }
 
-  /* 6. Section 03: Flagship ESG Report Dimension Filter */
+  /* 4. ESG Report Dimension Filter (/esg/) */
   var esgTabs = document.querySelectorAll('[data-esg-filter]');
   var esgCards = document.querySelectorAll('.esg-row-card');
   for (var ef = 0; ef < esgTabs.length; ef++) {
@@ -177,7 +84,7 @@
     });
   }
 
-  /* 7. Section 04: 35% / 35% / 30% Statutory Escrow Ring Inspector */
+  /* 5. Statutory 35% / 35% / 30% Escrow Ring Inspector (/partners/) */
   var sliceBtns = document.querySelectorAll('[data-escrow-idx]');
   var ringArcs = document.querySelectorAll('.escrow-arc');
   var ringPct = document.getElementById('escrowRingPct');
@@ -209,7 +116,7 @@
     });
   }
 
-  /* 8. Section 05: 1-Click Vertical Pre-Selection */
+  /* 6. One-Click Supply Vertical Pre-Selection (Home) */
   var vertSelectBtns = document.querySelectorAll('[data-select-vertical]');
   var verticalSelect = document.getElementById('fieldVertical');
   var startSection = document.getElementById('start');
@@ -224,25 +131,38 @@
       }
       var orgField = document.getElementById('fieldOrg');
       if (orgField) {
-        setTimeout(function () { orgField.focus({ preventScroll: true }); }, 350);
+        setTimeout(function () { orgField.focus({ preventScroll: true }); }, 320);
       }
     });
   }
 
-  /* 9. Section 07: Accessible On-Blur Validation & Serverless Brief Dispatch */
+  /* 7. Accessible PDPL Validation + Backend Form Relay + Reference Brief */
+  var formEl = document.getElementById('partnershipForm');
   if (formEl) {
     var msgRequired = formEl.getAttribute('data-err-required') || 'Required';
     var msgEmail = formEl.getAttribute('data-err-email') || 'Invalid email';
+    var msgConsent = formEl.getAttribute('data-err-consent') || 'Consent required';
+    var msgSending = formEl.getAttribute('data-msg-sending') || 'Submitting...';
+    var msgSent = formEl.getAttribute('data-msg-sent') || 'Submitted.';
+    var msgFallback = formEl.getAttribute('data-msg-fallback') || 'Brief ready below.';
+    var ajaxEndpoint = formEl.getAttribute('data-ajax-endpoint') || '';
 
     function validateField(input) {
       var errEl = document.getElementById(input.id + 'Err');
-      var val = (input.value || '').trim();
       var errMsg = '';
-      if (input.hasAttribute('required') && !val) {
-        errMsg = msgRequired;
-      } else if (input.type === 'email' && val && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)) {
-        errMsg = msgEmail;
+      if (input.type === 'checkbox') {
+        if (input.hasAttribute('required') && !input.checked) {
+          errMsg = msgConsent;
+        }
+      } else {
+        var val = (input.value || '').trim();
+        if (input.hasAttribute('required') && !val) {
+          errMsg = msgRequired;
+        } else if (input.type === 'email' && val && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)) {
+          errMsg = msgEmail;
+        }
       }
+
       if (errMsg) {
         input.setAttribute('aria-invalid', 'true');
         if (errEl) errEl.textContent = errMsg;
@@ -255,14 +175,20 @@
 
     var reqInputs = formEl.querySelectorAll('input[required]');
     for (var ri = 0; ri < reqInputs.length; ri++) {
-      reqInputs[ri].addEventListener('blur', function () {
-        validateField(this);
-      });
-      reqInputs[ri].addEventListener('input', function () {
-        if (this.getAttribute('aria-invalid') === 'true') {
+      if (reqInputs[ri].type === 'checkbox') {
+        reqInputs[ri].addEventListener('change', function () {
           validateField(this);
-        }
-      });
+        });
+      } else {
+        reqInputs[ri].addEventListener('blur', function () {
+          validateField(this);
+        });
+        reqInputs[ri].addEventListener('input', function () {
+          if (this.getAttribute('aria-invalid') === 'true') {
+            validateField(this);
+          }
+        });
+      }
     }
 
     function computeRefCode(seed) {
@@ -291,6 +217,7 @@
         return;
       }
 
+      var trackVal = (document.getElementById('fieldTrack') || {}).value || 'buyer';
       var org = document.getElementById('fieldOrg').value.trim();
       var role = document.getElementById('fieldRole').value.trim();
       var name = document.getElementById('fieldName').value.trim();
@@ -302,29 +229,29 @@
       var scopeText = scopeEl.options[scopeEl.selectedIndex].text;
       var notes = (document.getElementById('fieldNotes').value || '').trim();
 
-      var refCode = computeRefCode(org + '|' + email + '|' + vertText + '|' + activeTrack);
-      var trackLabel = activeTrack === 'factory'
+      var refCode = computeRefCode(org + '|' + email + '|' + vertText + '|' + trackVal);
+      var trackLabel = trackVal === 'factory'
         ? (lang === 'en' ? 'National Host Factory / Operator' : 'مصنع أو مشغّل وطني شريك')
-        : (lang === 'en' ? 'Enterprise Buyer / Gov Entity' : 'شريك توريد مؤسسي / جهة حكومية');
+        : (lang === 'en' ? 'Enterprise Buyer / Public Entity' : 'مشتري مؤسسي / جهة حكومية');
 
       var lines = lang === 'en' ? [
         'ATHAR SOURCING — INSTITUTIONAL PARTNERSHIP BRIEF',
         'Reference: ' + refCode,
         'Track: ' + trackLabel,
-        'Entity / Facility: ' + org,
+        'Organization / Facility: ' + org,
         'Contact: ' + name + (role ? ' (' + role + ')' : ''),
         'Email: ' + email + ' | Phone: ' + phone,
         'Target Vertical: ' + vertText,
-        'Scope / Priority: ' + scopeText
+        'Requirement: ' + scopeText
       ] : [
         'شركة توليد الأثر | مذكرة طلب شراكة مؤسسية',
         'رقم المرجع: ' + refCode,
-        'المسار المؤسسي: ' + trackLabel,
+        'المسار: ' + trackLabel,
         'الجهة / المنشأة: ' + org,
         'مقدم الطلب: ' + name + (role ? ' (' + role + ')' : ''),
         'البريد: ' + email + ' | الجوال: ' + phone,
         'القطاع المستهدف: ' + vertText,
-        'النطاق / الأولوية: ' + scopeText
+        'المطلوب: ' + scopeText
       ];
 
       if (notes) {
@@ -333,10 +260,11 @@
 
       var briefText = lines.join('\n');
       var subject = (lang === 'en'
-        ? '[Athar Partnership ' + refCode + '] '
-        : '[شراكة توليد الأثر ' + refCode + '] ') + org;
+        ? '[Athar Sourcing ' + refCode + '] '
+        : '[توليد الأثر ' + refCode + '] ') + org;
 
       var resultBox = document.getElementById('briefResult');
+      var statusBanner = document.getElementById('briefServerStatus');
       var refSpan = document.getElementById('briefRefVal');
       var previewPre = document.getElementById('briefPreviewText');
       var mailBtn = document.getElementById('briefMailtoBtn');
@@ -349,7 +277,7 @@
       if (mailBtn) {
         mailBtn.setAttribute(
           'href',
-          'mailto:Hassan@atharloop.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(briefText)
+          'mailto:partnerships@atharloop.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(briefText)
         );
       }
       if (waBtn) {
@@ -359,6 +287,43 @@
         );
       }
       if (copyStatus) copyStatus.textContent = '';
+
+      var isHttp = window.location.protocol === 'http:' || window.location.protocol === 'https:';
+      if (isHttp && window.fetch && ajaxEndpoint) {
+        if (statusBanner) statusBanner.textContent = msgSending;
+        fetch(ajaxEndpoint, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            _subject: subject,
+            _cc: 'partnerships@atharloop.com',
+            _template: 'table',
+            reference: refCode,
+            track: trackLabel,
+            organization: org,
+            contact_name: name,
+            role: role || '-',
+            email: email,
+            phone: phone,
+            vertical: vertText,
+            requirement: scopeText,
+            notes: notes || '-',
+            pdpl_consent: 'Accepted'
+          })
+        }).then(function (res) {
+          if (statusBanner) {
+            statusBanner.textContent = res.ok ? msgSent : msgFallback;
+          }
+        }).catch(function () {
+          if (statusBanner) statusBanner.textContent = msgFallback;
+        });
+      } else if (statusBanner) {
+        statusBanner.textContent = msgFallback;
+      }
+
       if (resultBox) {
         resultBox.removeAttribute('hidden');
         resultBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
