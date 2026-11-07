@@ -677,7 +677,7 @@ button {
   margin-top: 2px;
 }
 
-/* Trust & Specimen Download Band */
+/* Trust & Assurance Band */
 .trust-band {
   background-color: var(--deed-sand);
   border-bottom: 2px solid var(--waqf-brass);
@@ -688,7 +688,6 @@ button {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 18px;
-  margin-bottom: 20px;
 }
 
 .trust-card {
@@ -709,31 +708,6 @@ button {
   font-size: 0.86rem;
   color: var(--muted-ink);
   margin: 0;
-}
-
-.specimen-bar {
-  background-color: var(--deed-paper);
-  border: 2px solid var(--trustee-green);
-  padding: 18px 22px;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-}
-
-.specimen-bar-title {
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--trustee-green);
-  margin: 0 0 3px;
-}
-
-.specimen-bar-desc {
-  font-size: 0.87rem;
-  color: var(--muted-ink);
-  margin: 0;
-  max-width: 72ch;
 }
 
 /* Standard Sections */
